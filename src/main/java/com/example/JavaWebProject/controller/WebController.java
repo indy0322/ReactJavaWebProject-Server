@@ -3,6 +3,7 @@ package com.example.JavaWebProject.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,9 +19,36 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@Slf4j
 @RequiredArgsConstructor
 public class WebController {
+
+
+    @PostMapping("/api/test")
+    public String postMethodName(@RequestBody User user) {
+        System.out.println("아이디: " + user.getUserId());
+        System.out.println("비밀번호: " + user.getUserPasswd());
+        
+        return "Good";
+    }
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     private final UserService userService;
     //private final SecurityService securityService;
 
