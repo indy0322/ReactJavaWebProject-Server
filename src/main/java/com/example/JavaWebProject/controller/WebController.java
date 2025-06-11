@@ -31,24 +31,6 @@ public class WebController {
         return "Good";
     }
     
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     private final UserService userService;
     //private final SecurityService securityService;
 
