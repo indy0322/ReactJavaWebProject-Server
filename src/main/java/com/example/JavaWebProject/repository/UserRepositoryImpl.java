@@ -19,11 +19,11 @@ public class UserRepositoryImpl implements UserRepository{
         return repository.save(user);
     }
 
-    @Override
+    /*@Override
     public String update(UserUpdateDto userUpdateDto){
         repository.updateUser(userUpdateDto.getUserId(), userUpdateDto.getUserPasswd(), userUpdateDto.getSearchId());
         return "갱신 완료";
-    }
+    }*/
 
     @Override
     public User search(String userId){

@@ -6,7 +6,7 @@ import com.example.JavaWebProject.domain.UserUpdateDto;
 public interface UserRepository {
     User save(User user);
 
-    String update(UserUpdateDto userUpdateDto);
+    /*String update(UserUpdateDto userUpdateDto);*/
 
     User search(String userId);
 

@@ -22,6 +22,8 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class WebController {
 
+    private final UserService userService;
+    //private final SecurityService securityService;
 
     @PostMapping("/api/test")
     public String postMethodName(@RequestBody User user) {
@@ -31,8 +33,6 @@ public class WebController {
         return "Good";
     }
     
-    private final UserService userService;
-    //private final SecurityService securityService;
 
     @GetMapping("/api/hello")
     public List<String> Hello(){
@@ -47,15 +47,15 @@ public class WebController {
                 return "존재하는 아이디 입니다";
             }
             userService.save(user);
-            return user.getUserId();
+            return user.getUserId() + "님 가입되었습니다.";
         }
         catch(Exception e){
             System.out.println(e);
             return "아이디, 비밀번호를 제대로 입력해주세요";
         }
     }
-
-    @PostMapping("/api/searchUser")
+}
+    /*@PostMapping("/api/searchUser")
     public User searchUser(@RequestBody SearchUser userId){ //@RequestBody String userId 같이 매개변수를 지정하면 안된다.(매개변수의 객체는 User 같이 따라 만들어 주어야 한다.)
         User findUser = userService.search(userId.getUserId());
         return findUser;
@@ -69,7 +69,7 @@ public class WebController {
     @PostMapping("/api/deleteUser")
     public String deleteUser(@RequestBody SearchUser userId){ //@RequestBody String userId 같이 매개변수를 지정하면 안된다.(매개변수의 객체는 User 같이 따라 만들어 주어야 한다.)
         return userService.delete(userId.getUserId());
-    }
+    }*/
 
     /*@PostMapping("/api/login")
     public String login(@RequestBody User user){
@@ -97,4 +97,4 @@ public class WebController {
             return "로그인에 실패했습니다.";
         }
     }*/
-}
+

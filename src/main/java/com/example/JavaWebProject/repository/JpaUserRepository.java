@@ -12,10 +12,10 @@ public interface JpaUserRepository extends JpaRepository<User,String>{
     @Query("select u from User u where u.userId = :userId")
     User findByUsers(@Param("userId") String userId);
 
-    @Modifying
+    /*@Modifying
     @Transactional
     @Query("update User u set u.userId = :userId, u.userPasswd = :userPasswd where u.userId = :searchId")
-    void updateUser(@Param("userId") String userId, @Param("userPasswd") String userPasswd, @Param("searchId") String searchId);
+    void updateUser(@Param("userId") String userId, @Param("userPasswd") String userPasswd, @Param("searchId") String searchId);*/
 
     @Modifying
     @Transactional

@@ -17,10 +17,10 @@ public class UserServiceImpl implements UserService{
         return userRepository.save(user);
     }
 
-    @Override
+    /*@Override
     public String update(UserUpdateDto updateDto){
         return userRepository.update(updateDto);
-    }
+    }*/
 
     @Override
     public User search(String userId){
