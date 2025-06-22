@@ -4,6 +4,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.JavaWebProject.domain.User;
 import com.example.JavaWebProject.domain.UserUpdateDto;
+import com.example.JavaWebProject.util.JwtUtil;
 
 import lombok.RequiredArgsConstructor;
 

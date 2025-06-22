@@ -8,6 +8,7 @@ import com.example.JavaWebProject.repository.UserRepository;
 import com.example.JavaWebProject.repository.UserRepositoryImpl;
 import com.example.JavaWebProject.service.UserService;
 import com.example.JavaWebProject.service.UserServiceImpl;
+import com.example.JavaWebProject.util.JwtFilter;
 
 import lombok.RequiredArgsConstructor;
 

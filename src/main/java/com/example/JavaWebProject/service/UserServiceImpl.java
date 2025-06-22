@@ -3,6 +3,7 @@ package com.example.JavaWebProject.service;
 import com.example.JavaWebProject.domain.User;
 import com.example.JavaWebProject.domain.UserUpdateDto;
 import com.example.JavaWebProject.repository.UserRepository;
+import com.example.JavaWebProject.util.JwtUtil;
 import com.example.JavaWebProject.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -17,10 +18,16 @@ public class UserServiceImpl implements UserService{
         return userRepository.save(user);
     }
 
+
     /*@Override
     public String update(UserUpdateDto updateDto){
         return userRepository.update(updateDto);
     }*/
+
+    @Override
+    public String login(User user){
+        return JwtUtil.create(user);
+    }
 
     @Override
     public User search(String userId){

@@ -8,6 +8,8 @@ public interface UserService {
 
     /*String update(UserUpdateDto userUpdateDto);*/
 
+    String login(User user);
+
     User search(String userId);
 
     String delete(String userId);
