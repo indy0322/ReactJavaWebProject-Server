@@ -16,7 +16,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 @Service
 public class JwtUtil {
-    private final static Dotenv dotenv = Dotenv.configure().directory("src/main/resources").load();
+    private final static Dotenv dotenv = Dotenv.load();
     public final static String key = dotenv.get("JWT_SECRET");
 
     public static String create(User user){
