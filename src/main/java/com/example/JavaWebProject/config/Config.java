@@ -9,6 +9,7 @@ import com.example.JavaWebProject.repository.UserRepositoryImpl;
 import com.example.JavaWebProject.service.UserService;
 import com.example.JavaWebProject.service.UserServiceImpl;
 import com.example.JavaWebProject.util.JwtFilter;
+import com.example.JavaWebProject.util.JwtUtil;
 
 import lombok.RequiredArgsConstructor;
 
@@ -16,10 +17,11 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class Config {
     private final JpaUserRepository jpaUserRepository;
+    private final JwtUtil jwtUtil;
 
     @Bean
     public UserService userService(){
-        return new UserServiceImpl(userRepository());
+        return new UserServiceImpl(userRepository(),jwtUtil);
     }
 
     @Bean

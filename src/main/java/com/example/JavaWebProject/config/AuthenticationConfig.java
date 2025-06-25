@@ -12,7 +12,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.example.JavaWebProject.util.JwtFilter;
 
-import lombok.extern.slf4j.Slf4j;
 
 @Configuration
 @EnableWebSecurity
@@ -32,7 +31,7 @@ public class AuthenticationConfig {
                 )
                 .authorizeHttpRequests(auth -> auth
                     .requestMatchers("/", "/api/login","/api/register").permitAll()// 전체 접근을 허용
-                    .anyRequest().authenticated()///, /api/** 경로는 누구나 접근 허용 (permitAll()) 그 외 나머지 모든 경로는 인증 필요 (authenticated())
+                    .anyRequest().authenticated()// /, /api/login, /api/register 경로는 누구나 접근 허용 (permitAll()) 그 외 나머지 모든 경로는 인증 필요 (authenticated())
                 )
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class) //jwtFilter를 인증 필터 체인에 앞단에 삽입, JWT 토큰을 먼저 확인해서 사용자 인증을 시도
                 .build();

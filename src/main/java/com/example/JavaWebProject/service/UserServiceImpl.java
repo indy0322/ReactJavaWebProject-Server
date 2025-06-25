@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 public class UserServiceImpl implements UserService{
 
     private final UserRepository userRepository;
+    private final JwtUtil jwtUtil;
 
     @Override
     public User save(User user){
@@ -26,7 +27,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public String login(User user){
-        return JwtUtil.create(user);
+        return jwtUtil.create(user);
     }
 
     @Override

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties.Jwt;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -60,23 +61,25 @@ public class WebController {
     }
 
     @PostMapping("/api/login")
-    public ResponseEntity<String> login(@RequestBody User user) {
+    public ResponseEntity<String> login(@RequestBody User user, Authentication authentiacation) {
         System.out.println("아이디: " + user.getUserId());
         System.out.println("비밀번호: " + user.getUserPasswd());
+
+        //authentiacation.getName(); => userId를 가져오는 코드
+        User searchedUser = userService.search(user.getUserId());
+
+        if(user.getUserId().equals(searchedUser.getUserId())){
+            if(user.getUserPasswd().equals(searchedUser.getUserPasswd())){
+                String token = userService.login(user);
+                System.out.print(token);
+                return ResponseEntity.ok().body(token);
+            }else{
+                return ResponseEntity.ok().body("잘못된 비밀번호입니다.");
+            }
+        }else{
+            return ResponseEntity.ok().body("존재하지 않는 아이디입니다.");
+        }
         
-        String token = userService.login(user);
-        System.out.print(token);
-        return ResponseEntity.ok().body(token);
-    }
-    
-    @PostMapping("/api/looo")
-    public ResponseEntity<String> looo(@RequestBody User user) {
-        System.out.println("아이디: " + user.getUserId());
-        System.out.println("비밀번호: " + user.getUserPasswd());
-        
-        String token = userService.login(user);
-        System.out.print(token);
-        return ResponseEntity.ok().body(token);
     }
 
     /*@PostMapping("/api/login")
